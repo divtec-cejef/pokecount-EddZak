@@ -11,9 +11,11 @@ const compteurEl = document.getElementById("compteur-el");
 const sauvegardeEl = document.getElementById("sauvegarde-el");
 const capturerBtn = document.getElementById("capturer-btn");
 const sauvegarderBtn = document.getElementById("sauvegarder-btn");
+const resetBtn = document.getElementById("reset-btn");
+
 capturerBtn.addEventListener("click", capturer);
 sauvegarderBtn.addEventListener("click", sauvegarder);
-capturerBtn.addEventListener("click", capturer);
+resetBtn.addEventListener("click", reset);
 
 function capturer(){
     compteur+= 5;
@@ -34,6 +36,12 @@ function sauvegarder() {
     compteur = 0;
     localStorage.setItem("captures", sauvegardeEl.innerHTML);
     compteurEl.textContent = compteur;
+}
+
+function reset(){
+    localStorage.clear();
+    location.reload();
+    alert("Sauvegarde vider")
 }
 window.addEventListener("load", () => {
     sauvegardeEl.innerHTML = localStorage.getItem("captures") || "";});
